@@ -15,6 +15,13 @@ class Campus(models.Model):
         return str(self.name)
 
 
+class Department(models.Model):
+    code = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=50)
+    initials = models.CharField(max_length=256)
+    campus = models.ForeignKey(Campus, on_delete = models.CASCADE)
+
+
 class Course(models.Model):
     GENRE = (
              ('D', 'Distância'),
