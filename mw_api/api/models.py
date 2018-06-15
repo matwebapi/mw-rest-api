@@ -3,16 +3,23 @@ from django.db import models
 
 class Campus(models.Model):
     CAMPI = (
-        ('Darcy Ribeiro', 'Darcy Ribeiro'),
-        ('Gama', 'Faculdade do Gama'),
-        ('Planaltina', 'Faculdade UnB Planaltina'),
-        ('Ceilândia', 'Faculdade de Ceilândia'),
+        ('DARCY', 'Darcy Ribeiro'),
+        ('FGA', 'Faculdade do Gama'),
+        ('FUP', 'Faculdade UnB Planaltina'),
+        ('FCE', 'Faculdade de Ceilândia'),
     )
 
     name = models.CharField(max_length=50, choices=CAMPI)
 
     def __str__(self):
         return str(self.name)
+
+
+class Department(models.Model):
+    code = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=50)
+    initials = models.CharField(max_length=256)
+    campus = models.ForeignKey(Campus, on_delete = models.CASCADE, blank=True, null=True)
 
 
 class Course(models.Model):
