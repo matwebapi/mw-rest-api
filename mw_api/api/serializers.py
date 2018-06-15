@@ -1,4 +1,4 @@
-from .models import (Campus, Course, )
+from .models import (Campus, Course, Department, )
 
 from rest_framework import serializers
 
@@ -17,4 +17,12 @@ class CourseSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Course
+        fields = '__all__'
+
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    campus = serializers.ReadOnlyField(source='campus.get_name_display')
+    campus_id = serializers.ReadOnlyField(source='campus.pk')
+    class Meta:
+        model = Department
         fields = '__all__'
