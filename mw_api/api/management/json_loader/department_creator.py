@@ -1,17 +1,16 @@
 from api.models import (Campus, Department, )
 from api.management.json_loader.creator import ListsCreator
+from api.management.json_loader.json_path import Json
 
 
 class DepartmentsCreator(ListsCreator):
-    key_map = {
-        'code': 'CODIGO',
-        'name': 'DENOMINACAO',
-        'initials': 'SIGLA'
-    }
+    keys = ('CODIGO', 'DENOMINACAO', 'SIGLA')
 
     def __init__(self, json_data):
-        super().__init__(key_map=DepartmentsCreator.key_map, json_data=json_data)
+        self.json_name, self.data = Json.get_root_data(json_data)
         self.__set_campus_name()
+
+        super().__init__(keys=DepartmentsCreator.keys, data=self.data)
 
     def __set_campus_name(self):
         PREFIX = 'DEPARTAMENTOS_'

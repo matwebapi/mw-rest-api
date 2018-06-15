@@ -1,5 +1,6 @@
 from api.management.json_loader.json_path import Json
 from api.management.json_loader .department_creator import DepartmentsCreator
+from api.management.json_loader .subject_creator import SubjectsCreator
 from api.management.json_loader import utils
 
 
@@ -16,11 +17,13 @@ class MiddleParser:
         root = list(data.keys())[0]
 
         if name.startswith(MiddleParser.DEPARTAMENTOS):
-            utils.debug('data', data)
-            print('Creating DEPARTMENTS: {}'.format(root))
             dc = DepartmentsCreator(data)
             d = dc.create_departments()
         elif name.startswith(MiddleParser.DISCIPLINAS):
+            utils.debug('data', data)
+            print('Creating SUBJECTS: {}'.format(root))
+
+            sc = SubjectsCreator(data)
             pass
         else:
             raise Exception('File name not supported')
