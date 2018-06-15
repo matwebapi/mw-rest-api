@@ -1,5 +1,5 @@
 from api.management.json_loader.json_path import Json
-from api.management.json_loader .department_creator import DepartmentCreator
+from api.management.json_loader .department_creator import DepartmentsCreator
 from api.management.json_loader import utils
 
 
@@ -18,12 +18,8 @@ class MiddleParser:
         if name.startswith(MiddleParser.DEPARTAMENTOS):
             utils.debug('data', data)
             print('Creating DEPARTMENTS: {}'.format(root))
-            dc = DepartmentCreator(data)
+            dc = DepartmentsCreator(data)
             d = dc.create_departments()
-            if name != 'DEPARTAMENTOS_FGA.json':
-                return
-            else:
-                utils.debug('FGA.data', data)
         elif name.startswith(MiddleParser.DISCIPLINAS):
             pass
         else:
