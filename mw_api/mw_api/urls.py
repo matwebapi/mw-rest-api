@@ -6,13 +6,14 @@ from rest_framework import routers
 
 from api import views as api_views
 
-schema_view = get_swagger_view(title="MatriculaWeb API")
+schema_view = get_swagger_view(title='MatriculaWeb API')
 router = routers.DefaultRouter()
 router.register('campi', api_views.CampiViewSet)
 router.register('courses', api_views.CoursesViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', schema_view),
-#    path('', include(router.urls)),
+    path('api/', include(router.urls)),
+
+    path('admin/', admin.site.urls),
 ]
