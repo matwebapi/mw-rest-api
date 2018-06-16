@@ -1,8 +1,10 @@
+from api.management.json_loader.utils import debug
 
 class ListsCreator:
     def __init__(self, keys, data):
         assert(isinstance(keys, tuple))
         assert(isinstance(data, dict))
+        assert(set(keys) == set(data.keys()))
 
         self.keys = keys
         self.data = data

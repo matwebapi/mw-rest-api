@@ -29,6 +29,11 @@ class Subject(models.Model):
     department = models.ForeignKey(Department, on_delete = models.CASCADE,
     blank=True, null=True)
 
+    def __str__(self):
+        return '({}),  ({}), ({})'.format(self.code, self.name,
+        self.department.code)
+
+
 class Course(models.Model):
     GENRE = (
              ('D', 'Distância'),

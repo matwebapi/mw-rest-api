@@ -23,14 +23,19 @@ class DepartmentsCreator(ListsCreator):
         for i in range(len(self.lists)):
             self.__create_department_from_index(i)
 
+    def try_get_department(self, code, initials, name, campus):
+        try:
+            department = Department.objects.get(code=code)
+            print('DEPARTMENT [{}] already existed.'.format(department.name))
+        except Department.DoesNotExist:
+            department = Department.objects.create(code=code, initials=initials,
+                                                name=name, campus=campus)
+            print('Created DEPARTMENT [{}] successfully'.format(department.name))
+        return department
+
     def __create_department_from_index(self, i):
         code, name, initials = self.lists[i]
         campus = Campus.objects.get_or_create(name=self.campus_name)[0]
 
-        department, created = Department.objects.get_or_create(code=code, initials=initials,
-                                           name=name, campus=campus)
-        if created:
-            print('Created DEPARTMENT [{}] successfully'.format(department.name))
-        else:
-            print('DEPARTMENT [{}] already existed.'.format(department.name))
+        department = self.try_get_department(code, name, initials, campus)
         return department

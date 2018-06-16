@@ -1,8 +1,8 @@
 from rest_framework import viewsets
 
-from .models import (Campus, Course, Department, )
+from .models import (Campus, Course, Department, Subject, )
 from .serializers import (CampusSerializer, CourseSerializer,
-            DepartmentSerializer,)
+            DepartmentSerializer, SubjectSerializer, )
 
 
 class CampiViewSet(viewsets.ModelViewSet):
@@ -21,6 +21,15 @@ class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
     http_method_names = ['get']
+
+
+class SubjectViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows subjects to be viewed.
+    """
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer
+
 
 class CoursesViewSet(viewsets.ModelViewSet):
     """
