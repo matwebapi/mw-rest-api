@@ -20,6 +20,7 @@ class DepartmentViewSet(viewsets.ModelViewSet):
     """
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
+    http_method_names = ['get']
 
 class CoursesViewSet(viewsets.ModelViewSet):
     """
