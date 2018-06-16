@@ -28,3 +28,4 @@ class CoursesViewSet(viewsets.ModelViewSet):
     """
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    http_method_names = ['get']
