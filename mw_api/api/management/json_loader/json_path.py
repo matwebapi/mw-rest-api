@@ -25,3 +25,11 @@ class Json:
                                           extension=Json.EXTENSION)
         return jsons
 
+    @staticmethod
+    def get_root_data(data):
+        assert(isinstance(data, dict))
+        keys = list(data.keys())
+        assert(len(keys) == 1)
+
+        root = keys[0]
+        return root, data[root]

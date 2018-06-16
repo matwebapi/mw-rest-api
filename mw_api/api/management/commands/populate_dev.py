@@ -15,12 +15,17 @@ class Command(BaseCommand):
 
         print('Creating DEPARTAMENT\n\n')
         fga = Department.objects.get_or_create(code=650, initials='FGA',
-                name='UnB - Faculdade do Gama', campus=gama)
+                name='UnB - Faculdade do Gama', campus=gama)[0]
 
         code = models.IntegerField(primary_key=True)
         name = models.CharField(max_length=50)
         initials = models.CharField(max_length=256)
         campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
+
+        print('Creating SUBJECTS\n\n')
+        asa = Subject.objects.get_or_create(code=104779,
+                            name='AERODINAMICA DE SISTEMAS AEROESPACIAIS',
+                            department=fga)[0]
 
         print('Creating Courses\n\n')
         PRESENCIAL = 'P'
@@ -30,3 +35,5 @@ class Command(BaseCommand):
 
         eletronica = Course.objects.get_or_create(code=1601, name='ENGENHARIA ELETRÔNICA', genre=PRESENCIAL,
                           shift=DIURNO, campus=gama)[0]
+
+
