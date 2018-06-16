@@ -11,6 +11,7 @@ class CampiViewSet(viewsets.ModelViewSet):
     """
     queryset = Campus.objects.all()
     serializer_class = CampusSerializer
+    http_method_names = ['get']
 
 
 class DepartmentViewSet(viewsets.ModelViewSet):
