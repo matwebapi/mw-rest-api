@@ -44,9 +44,14 @@ sh run.sh
 
 ## Populando a API com os dados do MatriculaWeb
 
-Após a aplicação ter sido executada (passo anterior) é possível popular o banco de dados com os dados disponíveis do MatriculaWeb, para que possam ser acessíves através da API. O comando `populate_prod` do `manage.py` faz toda esta operação. Para executar o comando:
+Após a aplicação ter sido executada (passo anterior) é possível popular o banco de dados com os dados disponíveis do MatriculaWeb, para que possam ser acessíves através da API. O comando `populate_prod` do `manage.py` faz toda esta operação. 
 
-1.
+Para executar o comando:
+
 ```shell
 python3 manage.py populate_prod
 ```
+
+Agora os dados do MatriculaWeb devem estar disponíveis na url da aplicação:
+
+`http://0.0.0.0:8000/`
