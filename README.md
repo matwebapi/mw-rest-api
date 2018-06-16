@@ -41,3 +41,12 @@ sh run.sh
 
 4. Acesse a url da aplicação:
 `http://0.0.0.0:8000/`
+
+## Populando a API com os dados do MatriculaWeb
+
+Após a aplicação ter sido executada (passo anterior) é possível popular o banco de dados com os dados disponíveis do MatriculaWeb, para que possam ser acessíves através da API. O comando `populate_prod` do `manage.py` faz toda esta operação. Para executar o comando:
+
+1.
+```shell
+python3 manage.py populate_prod
+```
