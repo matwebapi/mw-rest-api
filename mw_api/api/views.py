@@ -2,7 +2,7 @@ from rest_framework import viewsets
 
 from .models import (Campus, Course, Department, Subject, )
 from .serializers import (CampusSerializer, CourseSerializer,
-            DepartmentSerializer, SubjectSerializer, )
+DepartmentSerializer, SubjectSerializer, )
 
 
 class CampiViewSet(viewsets.ModelViewSet):
@@ -27,6 +27,26 @@ class CampiViewSet(viewsets.ModelViewSet):
     serializer_class = CampusSerializer
     http_method_names = ['get']
 
+    def retrieve(self, request, pk=None):
+        """
+        API endpoint that allows select campi to be viewed.
+        
+            Path example:
+
+            http://127.0.0.1:8000/api/campi/2
+
+            Response example:
+
+            [
+                {
+                "name": "FCE",
+                "pk": 2
+                }
+            ]
+        ---
+        """
+        response = super(CampiViewSet, self).retrieve(request, pk)
+        return response
 
 class DepartmentViewSet(viewsets.ModelViewSet):
     """
