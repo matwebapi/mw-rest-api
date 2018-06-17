@@ -8,6 +8,17 @@ from .serializers import (CampusSerializer, CourseSerializer,
 class CampiViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows campi to be viewed.
+
+    Response example:
+
+    {
+        "DEPARTAMENTOS_FGA":
+        {
+            "CODIGO": "650",
+            "SIGLA": "FGA",
+            "DENOMINACAO": "UnB - Faculdade do Gama"
+        }
+    }
     """
     queryset = Campus.objects.all()
     serializer_class = CampusSerializer
