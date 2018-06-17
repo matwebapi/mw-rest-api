@@ -9,16 +9,15 @@ class CampiViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows campi to be viewed.
 
+    Path example:
+
+    http://127.0.0.1:8000/api/campi/
+
     Response example:
 
-    {
-        "DEPARTAMENTOS_FGA":
-        {
-            "CODIGO": "650",
-            "SIGLA": "FGA",
-            "DENOMINACAO": "UnB - Faculdade do Gama"
-        }
-    }
+    [{    "name": "FGA",    "pk": 1 }]
+
+
     """
     queryset = Campus.objects.all()
     serializer_class = CampusSerializer
