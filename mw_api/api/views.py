@@ -9,14 +9,18 @@ class CampiViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows campi to be viewed.
 
-    Path example:
+        Path example:
 
-    http://127.0.0.1:8000/api/campi/
+        http://127.0.0.1:8000/api/campi/
 
-    Response example:
+        Response example:
 
-    [{    "name": "FGA",    "pk": 1 }]
-
+        [
+            {
+            "name": "FGA",
+            "pk": 1
+            }
+        ]
 
     """
     queryset = Campus.objects.all()
@@ -27,6 +31,21 @@ class CampiViewSet(viewsets.ModelViewSet):
 class DepartmentViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows departments to be viewed.
+
+        Path example:
+
+        http://127.0.0.1:8000/api/departments/
+
+        Response example:
+
+        [
+            {
+                "code": 3,
+                "name": "",
+                "initials": ""
+            }
+        ]
+
     """
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
