@@ -30,7 +30,7 @@ class CampiViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, pk=None):
         """
         API endpoint that allows select campi to be viewed.
-        
+
             Path example:
 
             http://127.0.0.1:8000/api/campi/2
@@ -71,6 +71,29 @@ class DepartmentViewSet(viewsets.ModelViewSet):
     serializer_class = DepartmentSerializer
     http_method_names = ['get']
 
+    def retrieve(self, request, pk=None):
+        """
+        API endpoint that allows select departments to be viewed.
+
+            Path example:
+
+            http://127.0.0.1:8000/api/departments/3
+
+            Response example:
+
+            [
+                {
+                  "code": 3,
+                  "campus": "Darcy Ribeiro",
+                  "campus_id": 3,
+                  "name": "DEG",
+                  "initials": "DECANATO DE ENSINO DE GRADUACAO"
+                }
+            ]
+
+        """
+        response = super(DepartmentViewSet, self).retrieve(request, pk)
+        return response
 
 class SubjectViewSet(viewsets.ModelViewSet):
     """
