@@ -133,3 +133,27 @@ class CoursesViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     http_method_names = ['get']
+
+    def retrieve(self, request, pk=None):
+        """
+        API endpoint that allows select subjects to be viewed.
+
+            Path example:
+
+            http://127.0.0.1:8000/api/courses/1635
+
+            Response example:
+
+            [
+                {
+                    "code": 1635,
+                    "department": "FGA",
+                    "name": "ENGENHARIA DE SOFTWARE",
+                    "genre": "PRESENCIAL",
+                    "shift": "DIURNO"
+                }
+            ]
+
+        """
+        response = super(CoursesViewSet, self).retrieve(request, pk)
+        return response
