@@ -31,10 +31,6 @@ class MiddleParser:
             dc = DepartmentsCreator(data)
             d = dc.create_departments()
 
-            if name == 'DEPARTAMENTOS_FUP.json':
-                debug('name', name)
-                debug('data', data)
-
         for name in self.subject_names:
             data = Json.get_json_data(name)
 
