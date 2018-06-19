@@ -22,6 +22,10 @@ class Department(models.Model):
     campus = models.ForeignKey(Campus, on_delete = models.CASCADE, blank=True,
     null=True)
 
+    def __str__(self):
+        print('({}, {}, {}, {})'.format(self.code, self.name, self.initials,
+        self.campus.name))
+
 
 class Subject(models.Model):
     code = models.IntegerField(primary_key=True)
