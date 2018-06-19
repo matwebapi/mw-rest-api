@@ -1,6 +1,7 @@
 from api.models import (Campus, Department, )
 from api.management.json_loader.creator import ListsCreator
 from api.management.json_loader.json_path import Json
+from api.management.json_loader.utils import debug
 
 
 class DepartmentsCreator(ListsCreator):
@@ -33,9 +34,17 @@ class DepartmentsCreator(ListsCreator):
             print('Created DEPARTMENT [{}] successfully'.format(department.name))
         return department
 
+    def try_get_campus(self, name):
+        try:
+            campus = Campus.objects.get(name=name)
+        except Campus.DoesNotExist:
+            campus = Campus.objects.create(name=name)
+        return campus
+
     def __create_department_from_index(self, i):
         code, name, initials = self.lists[i]
-        campus = Campus.objects.get_or_create(name=self.campus_name)[0]
+
+        campus = self.try_get_campus(name=self.campus_name)
 
         department = self.try_get_department(code, name, initials, campus)
         return department
