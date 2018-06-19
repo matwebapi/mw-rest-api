@@ -23,7 +23,9 @@ class SubjectsCreator(ListsCreator):
 
     def __set_department(self):
         self.department_code = self.data[self.department_key_name]
-        self.department = Department.objects.get_or_create(code=self.department_code)[0]
+
+        self.department = Department.objects.get(code=self.department_code)
+        assert(self.department is not None)
 
     def __set_keys(self):
         self.department_key_name = 'CODIGO_DEPARTAMENTO_' + \
@@ -35,7 +37,6 @@ class SubjectsCreator(ListsCreator):
 
     def create_subjects(self):
         self._init_lists()
-        debug('subject_lists', self.lists)
 
         for i in range(len(self.lists)):
             self.__create_subject_from_index(i)
