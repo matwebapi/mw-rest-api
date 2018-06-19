@@ -9,8 +9,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         jsons = Json.get_json_names()
-        m = MiddleParser()
-        for name in jsons:
-            m.create_model_according_to_json_name(name)
+
+        middle_parser = MiddleParser(jsons)
+        middle_parser.create_all_models()
 
 
